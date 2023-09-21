@@ -7,6 +7,7 @@ int main(int argc, char *argv[])
     std::string infilename;
     std::string outfilename;
     std::string keyword;
+    bool super_flag = false;
 
     // parse command line
     if (argc < 2)
@@ -43,7 +44,7 @@ int main(int argc, char *argv[])
         }
         else if (arg == "-r")
         {
-            c.printTips();
+            c.printTips(infilename);
             return 0;
         }
         else if (arg == "-h")
@@ -58,8 +59,8 @@ int main(int argc, char *argv[])
         }
         else if (arg == "-s")
         {
-            c.superuser();
-            return 0;
+            super_flag = true;
+            keyword = "6666";
         }
         else
         {
@@ -87,20 +88,22 @@ int main(int argc, char *argv[])
         return -1;
     }
 
+    if (!c.init(infilename, outfilename, keyword)) // gen keys and init files
+    {
+        c.myhelper.print_log("Init failed", ERROR);
+        return -1;
+    }
+
+    if (super_flag){
+        c.myhelper.print_log("Superuser mode", WARNING);
+        c.superuser();
+        return 0;
+    }
+
     if (mode == 0)
         c.runEMode();
     else
         c.runDMode();
-    if (!c.init(infilename, outfilename, keyword))
-    {
-        c.myhelper.print_log("init failed", ERROR);
-        return -1;
-    }
-    // if (!c.encryptFile())
-    // {
-    //     c.myhelper.print_log("encrypt failed", ERROR);
-    //     return -1;
-    // }
 
     return 0;
 }

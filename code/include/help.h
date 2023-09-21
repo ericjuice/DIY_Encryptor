@@ -8,34 +8,42 @@
 #define WARNING 1
 #define ERROR 2
 
+const int zjx_version1 = 1;
+const int zjx_version2 = 0;
+
+#define uint unsigned int
+
 const int KEY_LEN_BYTES = 16;
 
 #pragma pack(1)
-struct file_header{ // 512 bytes
-    char author[8]; // max 8 bytes , note: the last char must be '\0'
-    int version1; // 4 bytes, to check if the file is right version
-    int version2; // 4 bytes
-    char key[KEY_LEN_BYTES]; // current it is 16 bytes, this key is XORed with super key
+struct file_header
+{                                           // 512 bytes
+    char author[8];                         // max 8 bytes , note: the last char must be '\0'
+    int version1;                           // 4 bytes, to check if the file is right version
+    int version2;                           // 4 bytes
+    uint key[KEY_LEN_BYTES / 4];            // this key is XORed with super key
     char tips[512 - 8 - 8 - KEY_LEN_BYTES]; // tips for recover key
 };
 #pragma pack()
 
-class helper{
-    int version1 = 1;
-    int version2 = 0;
+class helper
+{
 
-    public:
-    helper(){
+public:
+    helper()
+    {
         // print_log("helper hello", NORMAL);
     }
-    void print_version(){
+    void print_version()
+    {
         printf("\033[1;32m");
-        printf("version: %d.%d\n", version1, version2);
+        printf("version: %d.%d\n", zjx_version1, zjx_version2);
         printf("\033[0;32m");
         printf("@copyright: ericjuice  Github: https://github.com/ericjuice \n");
         printf("\033[0m");
     }
-    void print_help(){
+    void print_help()
+    {
         printf("\033[33m");
         printf("Usage: <executable> [args]\n\n");
 
@@ -54,30 +62,31 @@ class helper{
 
         printf("Example: ./<executable> -e -f \"input.txt\" -k \"keyword\" -o \"output.txt\"\n");
         printf("\033[0m");
-
     }
-    void print_log(std::string str, int type){
-        switch(type){
-            case NORMAL:
-                printf("\033[32m INFO: ");
-                printf("%s\n", str.c_str());
-                printf("\033[0m");
-                break;
-            case WARNING:
-                printf("\033[33m WARNING: ");
-                printf("%s\n", str.c_str());
-                printf("\033[0m");
-                break;
-            case ERROR:
-                printf("\033[31m ERROR: ");
-                printf("%s\n", str.c_str());
-                printf("\033[0m");
-                break;
-            default:
-                printf("\033[31m ERROR: ");
-                printf("unknown info type\n");
-                printf("\033[0m");
-                break;
+    void print_log(std::string str, int type)
+    {
+        switch (type)
+        {
+        case NORMAL:
+            printf("\033[32m INFO: ");
+            printf("%s\n", str.c_str());
+            printf("\033[0m");
+            break;
+        case WARNING:
+            printf("\033[33m WARNING: ");
+            printf("%s\n", str.c_str());
+            printf("\033[0m");
+            break;
+        case ERROR:
+            printf("\033[31m ERROR: ");
+            printf("%s\n", str.c_str());
+            printf("\033[0m");
+            break;
+        default:
+            printf("\033[31m ERROR: ");
+            printf("unknown info type\n");
+            printf("\033[0m");
+            break;
         }
     }
 };
