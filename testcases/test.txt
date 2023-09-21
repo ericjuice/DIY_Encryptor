@@ -1,9 +1,0 @@
- WARNING: No output file, use default output file: ..\testcases\test.txt.zjx
- INFO: Key generated!
-93939a97  INFO: File encrypted successfully!
- INFO: Exited! Hoping next meeting
-PS D:\MSvscodeprojects\c_projects\diy_pro\diy_crypto\code> .\crypto.exe -d -f ..\testcases\test.txt.zjx -k zjx
- WARNING: No output file, use default output file: ..\testcases\test.txt.zjx.zjx
- INFO: Key generated!
-6c6c6568  INFO: File decrypted successfully!
- INFO: Exited! Hoping next meeting
