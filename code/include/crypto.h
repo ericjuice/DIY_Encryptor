@@ -12,8 +12,8 @@ private:
     std::ofstream outFile;
     uint keys[KEY_LEN_BYTES / 4];
     uint temp_keys[KEY_LEN_BYTES / 4]; // to support keyGen and superkey
-    std::string superkey = "ericjuice";
-    file_header header;
+    std::string superkey = "ericjuice"; // super key
+    file_header header; // file header
 
 public:
     helper myhelper;

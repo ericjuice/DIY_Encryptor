@@ -44,6 +44,11 @@ int main(int argc, char *argv[])
         }
         else if (arg == "-r")
         {
+            if(infilename.empty()){
+                c.myhelper.print_log("No input file", ERROR);
+                c.myhelper.print_help();
+                return -1;
+            }
             c.printTips(infilename);
             return 0;
         }
