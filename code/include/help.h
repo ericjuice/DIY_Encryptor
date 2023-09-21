@@ -59,22 +59,22 @@ class helper{
     void print_log(std::string str, int type){
         switch(type){
             case NORMAL:
-                printf("\033[32m LOG_INFO: ");
+                printf("\033[32m INFO: ");
                 printf("%s\n", str.c_str());
                 printf("\033[0m");
                 break;
             case WARNING:
-                printf("\033[33m LOG_WARNING: ");
+                printf("\033[33m WARNING: ");
                 printf("%s\n", str.c_str());
                 printf("\033[0m");
                 break;
             case ERROR:
-                printf("\033[31m LOG_ERROR: ");
+                printf("\033[31m ERROR: ");
                 printf("%s\n", str.c_str());
                 printf("\033[0m");
                 break;
             default:
-                printf("\033[31m LOG_ERROR: ");
+                printf("\033[31m ERROR: ");
                 printf("unknown info type\n");
                 printf("\033[0m");
                 break;

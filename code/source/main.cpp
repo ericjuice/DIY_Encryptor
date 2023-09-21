@@ -77,6 +77,7 @@ int main(int argc, char *argv[])
     if (outfilename.empty())
     {
         std::string msg = "No output file, use default output file: " + infilename + ".zjx";
+        outfilename = infilename + ".zjx";
         c.myhelper.print_log(msg, WARNING);
     }
     if (keyword.empty())
