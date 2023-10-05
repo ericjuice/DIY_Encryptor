@@ -8,10 +8,10 @@
 #define WARNING 1
 #define ERROR 2
 
-const int zjx_version1 = 1;
+const int zjx_version1 = 2;
 const int zjx_version2 = 0;
 
-#define uint unsigned int
+typedef unsigned int uint;
 
 const int KEY_LEN_BYTES = 16;
 
@@ -37,7 +37,7 @@ public:
     void print_version()
     {
         printf("\033[1;32m");
-        printf("version: %d.%d\n", zjx_version1, zjx_version2);
+        printf("Version: %d.%d\n", zjx_version1, zjx_version2);
         printf("\033[0;32m");
         printf("@copyright: ericjuice  Github: https://github.com/ericjuice \n");
         printf("\033[0m");
