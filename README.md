@@ -21,15 +21,19 @@
 测试环境: Windows 10, Powershell, test.mp4(387 MB)
 
 加密模式:
+
 <img src="./demos/RunEncryptMode_v2.0.png" width="600" alt="加密模式">
 
 解密模式:
+
 <img src="./demos/RunDecryptMode_v2.0.png" width="600" alt="解密模式">
 
 超级密码模式:
+
 <img src="./demos/RunSuperuserMode_v2.0.png" width="600" alt="超级密码模式">
 
 密码提示恢复:
+
 <img src="./demos/RunRecoverMode_v2.0.png" width="600" alt="密码提示恢复">
 
 ### 实现流程
